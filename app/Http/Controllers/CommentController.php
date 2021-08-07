@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
-use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::paginate(10);
-        return PostResource::collection($post);
+        //
     }
 
     /**
@@ -28,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -37,14 +35,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request,$id)
     {
-        $post = new Post();
-        $post->Title = $request->Title;
-        $post->Body = $request->Body;
+        $post = Post::find($id);
+        $comment = new Comment();
+        $comment->comment = $request->comment;
 
-        if($post->save()){
-            return new PostResource($post);
+        if($post->comments()->save($comment)){
+            return $comment;
         }
     }
 
@@ -56,8 +54,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrfail($id);
-        return new PostResource($post);
+        //
     }
 
     /**
@@ -78,16 +75,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-        $post->Title = $request->Title;
-        $post->Body = $request->Body;
-
-        if($post->save()){
-            return new PostResource($post);
-        }
-
+        //
     }
 
     /**
@@ -98,9 +88,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-        if($post->delete()){
-            return new PostResource($post);
-        }
+        //
     }
 }

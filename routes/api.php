@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,8 +25,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //create this route for get all posts
 Route::get('/posts',[PostController::class,'index']);
 
+Route::get('/comments',[PostController::class,'index']);
+
 //create this route for add posts
 Route::post('/post',[PostController::class,'store']);
+Route::post('/comment/{id}',[CommentController::class,'store']);
+
 
 //create this route for get specific post
 Route::get('/post/{id}',[PostController::class,'show']);
