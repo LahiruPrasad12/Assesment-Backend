@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use \App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +28,8 @@ Route::get('/posts',[PostController::class,'index']);
 
 Route::get('/comments',[CommentController::class,'index']);
 
+Route::get('/roles',[RoleController::class,'index']);
+
 
 
 /*-----------------------------------------Add Data-----------------------------------------*/
@@ -36,7 +39,7 @@ Route::post('/post',[PostController::class,'store']);
 //create this route for add comments
 Route::post('/comment/{id}',[CommentController::class,'store']);
 
-
+Route::post('/role',[RoleController::class,'store']);
 
 /*-----------------------------------------Get Specific Data-----------------------------------------*/
 //create this route for get specific post
