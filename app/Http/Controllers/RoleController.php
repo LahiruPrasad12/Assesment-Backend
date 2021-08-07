@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -90,6 +91,17 @@ class RoleController extends Controller
         //
     }
 
+    public function addUser(){
+        $user = new User();
+        $user->name = "lahiru";
+        $user->email = "l@gmail.com";
+        $user->password = encrypt('secrete');
 
+        $user->save();
+
+        $roleids = [1,2];
+        $user->roles()->attach($roleids);
+        return "Record has been created";
+    }
 
 }

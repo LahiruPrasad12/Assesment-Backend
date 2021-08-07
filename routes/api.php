@@ -41,6 +41,8 @@ Route::post('/comment/{id}',[CommentController::class,'store']);
 
 Route::post('/role',[RoleController::class,'store']);
 
+Route::post('/user',[RoleController::class,'addUser']);
+
 /*-----------------------------------------Get Specific Data-----------------------------------------*/
 //create this route for get specific post
 Route::get('/post/{id}',[PostController::class,'show']);
