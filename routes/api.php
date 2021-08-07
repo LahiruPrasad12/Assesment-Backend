@@ -21,22 +21,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+/*-----------------------------------------Get All Data-----------------------------------------*/
 //create this route for get all posts
 Route::get('/posts',[PostController::class,'index']);
 
-Route::get('/comments',[PostController::class,'index']);
+Route::get('/comments',[CommentController::class,'index']);
 
+
+
+/*-----------------------------------------Add Data-----------------------------------------*/
 //create this route for add posts
 Route::post('/post',[PostController::class,'store']);
+
+//create this route for add comments
 Route::post('/comment/{id}',[CommentController::class,'store']);
 
 
+
+/*-----------------------------------------Get Specific Data-----------------------------------------*/
 //create this route for get specific post
 Route::get('/post/{id}',[PostController::class,'show']);
 
+
+
+/*-----------------------------------------Update Data-----------------------------------------*/
 //create this route for update specific post
 Route::put('/post/{id}',[PostController::class,'update']);
 
+
+
+
+/*-----------------------------------------Delete Data-----------------------------------------*/
 //create this route for delete specific post
 Route::delete('/post/{id}',[PostController::class,'destroy']);

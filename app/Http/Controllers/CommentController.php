@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use App\Models\Post;
@@ -16,7 +17,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $post = Comment::paginate(10);
+        return CommentResource::collection($post);
     }
 
     /**
