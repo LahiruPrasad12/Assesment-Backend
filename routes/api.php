@@ -54,3 +54,8 @@ Route::put('/post/{id}',[PostController::class,'update']);
 /*-----------------------------------------Delete Data-----------------------------------------*/
 //create this route for delete specific post
 Route::delete('/post/{id}',[PostController::class,'destroy']);
+
+
+
+/*-----------------------------------------get sub table Data using parent id's-----------------------------------------*/
+Route::get('/comment/{id}',[CommentController::class,'getCommentUsingPostId']);

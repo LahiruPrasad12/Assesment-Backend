@@ -92,4 +92,12 @@ class CommentController extends Controller
     {
         //
     }
+
+
+
+
+    public function getCommentUsingPostId($id){
+        $comment = Post::find($id)->comments;
+        return $comment;
+    }
 }
